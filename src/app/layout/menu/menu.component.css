@@ -1,0 +1,15 @@
+a {
+    margin-left: 50px;
+}
+
+@media (min-width: 200px) and (max-width: 800px) {
+    .navigation{
+        display: none;
+    } 
+}
+
+@media (min-width: 800px) {
+    #menuButton{
+        display: none;
+    } 
+}
