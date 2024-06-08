@@ -17,14 +17,11 @@ export class CadastroQuadraComponent {
   dataSource = new MatTableDataSource(this.quadras);
 
   constructor(private httpService : HttpService){
-    let quadra1 = new Quadra();
-    quadra1.id = 1;
-    quadra1.nome = 'Quadra Interna';
-    let quadra2 = new Quadra();
-    quadra2.id = 2;
-    quadra2.nome = 'Quadra Extena';
-    this.quadras.push(quadra1);
-    this.quadras.push(quadra2);
+    let quadrasStorage = localStorage.getItem("quadras");
+    if(quadrasStorage){
+      this.quadras = JSON.parse(quadrasStorage);
+      this.dataSource.data = this.quadras;
+    }
   }
 
   ngOnInit(){
@@ -50,10 +47,19 @@ export class CadastroQuadraComponent {
   }
 
   public gravarQuadra(){
+
+    if(this.nome == ""){
+      return;
+    }
+
     let quadra = new Quadra();
     quadra.id = Math.floor(Math.random()*10);
     quadra.nome = this.nome;
     this.quadras.push(quadra);
+    localStorage.setItem("quadras", JSON.stringify(this.quadras));
     this.dataSource.data = this.quadras;
+
+    this.nome = "";
   }
 }
+

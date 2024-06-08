@@ -45,5 +45,8 @@ export class CadastroUsuarioComponent {
     this.usuarios.push(usuario);
     this.dataSource.data = this.usuarios;
 
+    this.nome = "";
+    this.email = "";
+
   }
 }

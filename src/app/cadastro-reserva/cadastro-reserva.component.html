@@ -1,7 +1,7 @@
 <mat-card style="max-width: 50vh; margin: auto; padding: 15px;">
     <div>
         <mat-form-field style="display: block;">
-            <mat-select>
+            <mat-select [(ngModel)]="selectedQuadra">
                 <mat-option *ngFor="let quadra of quadras" [value]="quadra">{{quadra.nome}}</mat-option>
             </mat-select>
         </mat-form-field>
